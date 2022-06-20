@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  fluent:
+    build:
+      context: './'
+    image: tesh/fluent
+    ports:
+      - '24224:24224'
+    volumes:
+      - './fluent.conf:/fluentd/etc/fluent.conf:ro'
+      - './mongo.conf:/fluentd/etc/mongo.conf:ro'
+    env_file: '.env'
